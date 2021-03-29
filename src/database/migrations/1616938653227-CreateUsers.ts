@@ -9,7 +9,8 @@ export class CreateUsers1616938653227 implements MigrationInterface {
                 columns: [
                     {
                         name: "id",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     },
                     {
                         name: "name",
@@ -26,7 +27,7 @@ export class CreateUsers1616938653227 implements MigrationInterface {
                     },
                     {
                         name: "password",
-                        type: "varchar"
+                        type: "varchar",
                     },
                     {
                         name: "driver_license",

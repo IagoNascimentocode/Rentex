@@ -1,22 +1,20 @@
 # Cadastro de carro
 
 **RF**
-Deve ser possivel cadastrar um novo carro
-Deve ser possivel listar todas as categorias.
-Deve ser possivel listar todos os carros disponiveis pelo nome da categoria.
-Deve ser possivel listar todos os carros disponiveis pelo nome da marca.
-Deve ser possivel listar todos os carros disponiveis pelo nome do carro.
+Deve ser possivel cadastrar um novo carro.
 
 **RN**
 Não deve ser possivel cadastrar um carro com uma placa já existente.
-Não deve ser possivel alterar a placa de um carro já cadastrado.
 O carro deve ser cadastrado,por padrão,com disponibilidade.
-O usuario responsavel pelo cadastro deve ser um usuario administrador.
+*O usuario responsavel pelo cadastro deve ser um usuario administrador.
 
 # Listagem de carros
 
 **RF**
 Deve ser possivel listar todos os carros disponiveis.
+Deve ser possivel listar todos os carros disponiveis pelo nome da marca.
+Deve ser possivel listar todos os carros disponiveis pelo nome da categoria.
+Deve ser possivel listar todos os carros disponiveis pelo nome do carro.
 
 
 **RN**

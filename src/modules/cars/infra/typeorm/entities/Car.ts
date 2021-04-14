@@ -31,10 +31,13 @@ class Car {
 
     @ManyToOne(() => Category)
     @JoinColumn({ name: "category_id" })
-    category: Category
+    category: Category;
+
+    @Column()
+    category_id: string;
 
     @CreateDateColumn()
-    create_at: Date;
+    created_at: Date;
 
     constructor() {
         if (!this.id) {

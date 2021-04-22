@@ -1,8 +1,9 @@
 import dayjs from "dayjs"
 import utc from "dayjs/plugin/utc";
+import { IDateProvider } from "../IDateProvider";
 
 
-import { IDateProvider } from "./IDateProvider";
+
 
 dayjs.extend(utc);
 
@@ -17,7 +18,7 @@ class DayjsDateProvider implements IDateProvider {
   return dayjs(date).utc().local().format();
  }
 
- dateNow() {
+ dateNow(): Date {
   return dayjs().toDate();
  }
 

@@ -1,5 +1,5 @@
-import request from "supertest";
 import { app } from "@shared/infra/http/app";
+import request from "supertest";
 import { v4 as uuid } from "uuid"
 import { hash } from "bcrypt";
 
@@ -14,6 +14,7 @@ describe("Create Category Controller", () => {
     connection = await createConnection();
     await connection.runMigrations();
 
+
     const id = uuid();
     const password = await hash("admin", 8);
 
@@ -22,6 +23,7 @@ describe("Create Category Controller", () => {
       values('${id}','admin','admin@rentx.com.br','${password}',true,'now()','XXXXXXX')
       `
     );
+
   });
 
   afterAll(async () => {
@@ -44,10 +46,11 @@ describe("Create Category Controller", () => {
       .post("/categories")
       .send({
         name: "Category SuperTest",
-        description: "Category SuperTest"
+        description: "Category SuperTest",
       }).set({
         Authorization: `Bearer ${token}`
-      })
+      });
+
     expect(response.status).toBe(201);
   });
 

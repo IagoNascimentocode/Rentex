@@ -62,7 +62,7 @@ Ao realizar um aluguel, o status do carro deverá ser alterado para indisponíve
 Deve ser possivel realizar a devolução de um carro
 
 **RN**
-Se o carro for devolvido com menos de 24 horas , deverá ser cobrado diaria completa.
+Se o carro for devolvido com menos de 24 horas , deverá ser cobrado diária completa.
 Ao realizar a devolução , o carro deverá ser liberado para o outro aluguel.
 Ao realizar a devolução, o usuário deve ser liberado para outro aluguel.
 Ao realizar a devolução, deverá ser calculado o total do aluguel.

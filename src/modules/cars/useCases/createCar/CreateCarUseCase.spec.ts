@@ -19,7 +19,7 @@ describe("Create Car", () => {
             name: "Name Car",
             description: "Descripton Car",
             daily_rate: 100,
-            license_plate: "ABC-1134",
+            license_plate: "ABC-2234",
             fine_amount: 60,
             brand: "Brand",
             category_id: "Category"
@@ -29,37 +29,36 @@ describe("Create Car", () => {
         expect(car).toHaveProperty("id")
     })
 
-    it("shound not be able to create a car with exists license plate", () => {
-        expect(async () => {
-            await createCarUseCase.execute({
-                name: "Name Car",
-                description: "Descripton Car",
-                daily_rate: 100,
-                license_plate: "ABC-1134",
-                fine_amount: 60,
-                brand: "Brand",
-                category_id: "Category"
+    it("should not be able to create a car with exists license plate", async () => {
+        await createCarUseCase.execute({
+            name: "Name Car",
+            description: "description Car",
+            daily_rate: 100,
+            license_plate: "ABC-1134",
+            fine_amount: 60,
+            brand: "Brand",
+            category_id: "Category"
 
-            })
-            await createCarUseCase.execute({
-                name: "Name Car",
-                description: "Descripton Car",
-                daily_rate: 100,
-                license_plate: "ABC-1134",
-                fine_amount: 60,
-                brand: "Brand",
-                category_id: "Category"
+        })
+        await expect(createCarUseCase.execute({
+            name: "Name Car duplicate",
+            description: "description Car duplicate",
+            daily_rate: 100,
+            license_plate: "ABC-1134",
+            fine_amount: 60,
+            brand: "Brand",
+            category_id: "Category"
 
-            })
-        }).rejects.toBeInstanceOf(AppError)
+        })
+        ).rejects.toEqual(new AppError("Car already Exists!"))
     })
 
-    it("shound not be able to create a car with available true by default", async () => {
+    it("should not be able to create a car with available true by default", async () => {
         const car = await createCarUseCase.execute({
             name: "Car Available",
-            description: "Descripton Car",
+            description: "description Car",
             daily_rate: 100,
-            license_plate: "ABCD-1234",
+            license_plate: "ABCD-8934",
             fine_amount: 60,
             brand: "Brand",
             category_id: "Category"

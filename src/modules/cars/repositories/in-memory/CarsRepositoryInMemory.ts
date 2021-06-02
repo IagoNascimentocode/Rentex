@@ -1,6 +1,5 @@
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
-import { rentalRouter } from "@shared/infra/http/routes/rental.routes";
 import { ICarsRepository } from "../ICarsRepository";
 
 
@@ -18,7 +17,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
     }
 
     async findByLicensePlate(license_plate: string): Promise<Car> {
-        return this.cars.find(car => car.license_plate === license_plate)
+        return this.cars.find((car) => car.license_plate === license_plate)
     }
 
     async findAvailable(brand?: string, category_id?: string, name?: string): Promise<Car[]> {
@@ -36,11 +35,12 @@ class CarsRepositoryInMemory implements ICarsRepository {
     }
 
     async findById(id: string): Promise<Car> {
-        return this.cars.find(car => car.id === id)
+        return this.cars.find((car) => car.id === id)
     }
 
     async updateAvailable(id: string, available: boolean): Promise<void> {
-        const findIndex = this.cars.findIndex((car) => { car.id === id });
+
+        const findIndex = this.cars.findIndex((car) => car.id === id);
 
         this.cars[findIndex].available = available;
     }

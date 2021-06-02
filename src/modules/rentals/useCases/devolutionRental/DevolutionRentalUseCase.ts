@@ -8,7 +8,6 @@ import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 
 interface IRequest {
  id: string;
- user_id: string;
 }
 @injectable()
 class DevolutionRentalUseCase {
@@ -22,15 +21,20 @@ class DevolutionRentalUseCase {
   private dateProvider: IDateProvider
  ) { }
 
- async execute({ id, user_id }: IRequest): Promise<Rental> {
+ async execute({ id }: IRequest): Promise<Rental> {
   const rental = await this.rentalsRepository.findById(id);
-  const car = await this.carsRepository.findById(rental.car_id);
 
   const minimum_daily = 1;
 
 
   if (!rental) {
    throw new AppError("Rental does not exists");
+  }
+
+  const car = await this.carsRepository.findById(rental.car_id);
+
+  if (!car) {
+   throw new AppError("Car not found!");
   }
 
   const dateNow = this.dateProvider.dateNow();

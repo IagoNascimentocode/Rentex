@@ -3,7 +3,7 @@ import { UsersTokensRepository } from "@modules/accounts/infra/typeorm/repositor
 import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/DayjsDateProvider";
 import { AppError } from "@shared/errors/AppError";
 import { verify, sign } from "jsonwebtoken"
-import { inject } from "tsyringe"
+import { inject, injectable } from "tsyringe"
 
 
 interface IPayload {
@@ -11,6 +11,7 @@ interface IPayload {
  email: string;
 }
 
+@injectable()
 class RefreshTokenUseCase {
 
  constructor(
@@ -38,7 +39,7 @@ class RefreshTokenUseCase {
 
   const refresh_token = sign({ email }, auth.secret_refresh_token, {
    subject: sub,
-   expiresIn: auth.secret_refresh_token
+   expiresIn: auth.expires_in_refresh_token
   });
 
   await this.usersTokensRepository.create({

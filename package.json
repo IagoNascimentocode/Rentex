@@ -13,6 +13,7 @@
     "@types/swagger-ui-express": "^4.1.2",
     "aws-sdk": "^2.926.0",
     "bcrypt": "^5.0.1",
+    "class-transformer": "^0.4.0",
     "csv-parse": "^4.15.3",
     "dayjs": "^1.10.4",
     "docker": "^1.0.0",

@@ -1,5 +1,4 @@
 import { container } from "tsyringe";
-import "dotenv/config";
 
 import { IDateProvider } from "./DateProvider/IDateProvider";
 import { DayjsDateProvider } from "./DateProvider/implementations/DayjsDateProvider";
